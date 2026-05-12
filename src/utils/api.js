@@ -1,10 +1,14 @@
 import axios from 'axios';
 import { authStorage } from './authStorage';
 
+// Ensure API URL always ends with /api
+const rawApiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const BASE_URL = rawApiUrl.endsWith('/api') ? rawApiUrl : `${rawApiUrl}/api`;
+
 // Create axios instance with base configuration
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || '/api',
-  timeout: 10000,
+  baseURL: BASE_URL,
+  timeout: 60000, // 60s for model inference
 });
 
 
