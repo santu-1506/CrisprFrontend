@@ -278,8 +278,29 @@ const PredictionResult = ({ prediction }) => {
   // Source/category
   const source = prediction.prediction_source || 'AI Model';
 
+  // Biological override info
+  const override = prediction.model_info?.override;
+  const overrideReason = prediction.model_info?.override_reason;
+
   return (
     <div className="space-y-6">
+      {/* Biological override banner */}
+      {override && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex items-start gap-3 px-4 py-3 rounded-xl bg-amber-500/10 border border-amber-500/30"
+        >
+          <Info className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+          <div>
+            <p className="text-xs font-semibold text-amber-400 uppercase tracking-wide mb-0.5">
+              Biological Rule Applied: {override.replace(/_/g, ' ')}
+            </p>
+            <p className="text-xs text-zinc-400">{overrideReason}</p>
+          </div>
+        </motion.div>
+      )}
+
       {/* Header bar */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
