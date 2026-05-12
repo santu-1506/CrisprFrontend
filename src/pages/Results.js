@@ -5,7 +5,6 @@ import {
   DocumentTextIcon,
   MagnifyingGlassIcon,
   CalendarIcon,
-  FunnelIcon,
   ArrowDownTrayIcon,
   EyeIcon,
   TrashIcon,
@@ -58,6 +57,7 @@ const Results = () => {
 
   useEffect(() => {
     filterAndSortPredictions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [predictions, searchTerm, filterPrediction, sortBy]);
 
   const loadUserData = async () => {
