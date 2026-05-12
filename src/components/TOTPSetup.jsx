@@ -12,7 +12,8 @@ import {
 import axios from 'axios';
 
 // API base URL
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const _rawUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const API_BASE_URL = _rawUrl.endsWith('/api') ? _rawUrl : `${_rawUrl}/api`;
 
 const TOTPSetup = ({ onBack }) => {
   const [step, setStep] = useState('setup'); // 'setup', 'qr', 'verify', 'success'

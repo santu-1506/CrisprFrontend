@@ -11,7 +11,8 @@ import {
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const _rawUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const API_BASE_URL = _rawUrl.endsWith('/api') ? _rawUrl : `${_rawUrl}/api`;
 
 const EmailVerification = () => {
   const [searchParams] = useSearchParams();
