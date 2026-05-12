@@ -22,7 +22,9 @@ import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 import TOTPLogin from '../components/TOTPLogin';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+// Ensure API URL always ends with /api
+const rawApiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const API_BASE_URL = rawApiUrl.endsWith('/api') ? rawApiUrl : `${rawApiUrl}/api`;
 
 /* ════════════════════════════════════════════════════════════════
    FLOATING PARTICLE BACKGROUND
